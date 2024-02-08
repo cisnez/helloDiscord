@@ -91,7 +91,7 @@ async def on_message(meSsage):
 # Reply the exception error to Discord
                         await meSsage.channel.send(f"Error deleting message: {eVoidEd}")
 # Log the exception error to the CONSOLE
-                        logging.error(f"Error deleting message: {e}")
+                        logging.error(f"Error deleting message: {eVoidEd}")
 # Delete the `.delete` command message regardless of try-catch
                 await meSsage.delete()  # Delete the command message
                 return
