@@ -56,6 +56,7 @@ async def on_ready():
     else:
 # Log an error if unable to get `channelToPingWenReady`.
         logging.error(f"Unable to get channel: {channelToPingWenReady}")
+# Finish the on_ready function's with a summary log.
     logging.info(f"We have logged in as: {beOnTime.user}")
 
 # Create an event listener for wen Discord BOT get new `on_message`
