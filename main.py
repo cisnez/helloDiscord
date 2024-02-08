@@ -1,18 +1,19 @@
 #main.py
-
 # Use: see README.md
-
-# Note: Dev choices are in `camelCase` . . .
-#  OR `PascalCase` in the instance of `discord as Harmony` (see line 21).
+# Note: Dev choices are `camelCaseEd` . . .
+#  OR `PascalCase` where importing (see line 25+26).
 # ~Instances of `snake_case` are from Discord Python Library `discord`~
-
-# Set level logging.DEBUG to see ALL logs; logging.INFO for less
+# **Code narration fully left aligned**
+# Import the standard Python logging library
 import logging
-logging.basicConfig(level=logging.DEBUG)
+# Set logging.DEBUG to see ALL logs; logging.INFO for less
+logging.basicConfig(level=logging.INFO)
 
-# Set what Discord channel for to say Hello when On Ready
+# Set Discord channel for to say Hello wen On Ready
 #    1088511652619632670 (Server:CB Channel:#⏱│be-on-time)
+# To easily get the channel/server ID: open Discord, go to Settings > Advanced; and enable `developer mode`. 
 channelToPingWenReady = 1088511652619632670 
+# Set the message you want to Announce to the World
 messageToPingWenReady = "Hello!\nCasting Discord as Harmony:bangbang:"
 
 # Be sure you have set your DISCORD_TOKEN as environment variable
@@ -23,7 +24,7 @@ logging.debug(harmonyBotToken)
 # Create a Discord BOT object as beOnTime (camelCase)
 #   `pip install discord` required for this code to work
 import discord as Harmony
-from discord.ext import commands
+from discord.ext import commands as CommANDs
 inTenTs = Harmony.Intents.default()
 inTenTs.typing = True
 inTenTs.presences = True
@@ -31,28 +32,31 @@ inTenTs.messages = True
 inTenTs.guilds = True 
 inTenTs.members = False 
 inTenTs.message_content = True
-beOnTime = commands.Bot(command_prefix="~", intents=inTenTs)
+beOnTime = CommANDs.Bot(command_prefix="~", intents=inTenTs)
+# View the BOT Object if DEBUG logging is enabled.
 logging.debug(f"--BOT START--\n{beOnTime}\n--BOT END--")
 
-# # Create an event listener for wen Discord BOT go `on_ready`
-# @beOnTime.event
-# async def on_ready():
-# # Change presence settings
-#     await beOnTime.change_presence( status=Harmony.Status.online, activity=Harmony.Game(messageToPingWenReady) )
-# # Get the channel for to have da beOnTime ping messageToPingWenReady
-#     gotChannel = beOnTime.get_channel(channelToPingWenReady) 
-#     if gotChannel is not None:
-# # Send a message to the channel
-#         await beOnTime.channel.send(f"{messageToPingWenReady}")
-# # Get the topic of the channel
-#         chanTopic = gotChannel.topic
-# # Log details to the CONSOLE
-#         logging.debug(f"channelToPingWenReady topic set as: {chanTopic}")
-#         logging.info(f"BOT Activity: {beOnTime.activity}")
-#     else:
-# # Log an error if unable to get `channelToPingWenReady`.
-#         logging.error(f"Unable to get channel: {channelToPingWenReady}")
-#     logging.info(f"We have logged in as: {beOnTime.user}")
+# Create an event listener for wen Discord BOT go `on_ready`
+@beOnTime.event
+async def on_ready():
+# Change presence settings
+    await beOnTime.change_presence( status=Harmony.Status.online, activity=Harmony.Game(messageToPingWenReady) )
+# Get a channel for to ping wen first coming online
+    gotChannel = beOnTime.get_channel(channelToPingWenReady)
+# Check if we got a channel (does your bot have access to that?)
+    if gotChannel is not None:
+# Send a message to the channel
+        await gotChannel.send(f"{messageToPingWenReady}")
+# Get the topic of the channel
+        chanTopic = gotChannel.topic
+# Log details to the CONSOLE
+        logging.debug(f"channelToPingWenReady topic set as: {chanTopic}")
+        logging.info(f"BOT Activity: {beOnTime.activity}")
+# Maybe that all failed, because your bot didn't have access.
+    else:
+# Log an error if unable to get `channelToPingWenReady`.
+        logging.error(f"Unable to get channel: {channelToPingWenReady}")
+    logging.info(f"We have logged in as: {beOnTime.user}")
 
 # Create an event listener for wen Discord BOT get new `on_message`
 @beOnTime.event

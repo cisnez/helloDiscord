@@ -12,3 +12,6 @@
 ##              `DISCORD_TOKEN = token_hash`
 # 2. From command prompt launch the script: 
 ##       `python3 main.py`
+
+If all goes well your CONSOLE will display for example:
+`INFO:root:We have logged in as: JayaByrd#8578`
