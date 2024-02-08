@@ -1,7 +1,7 @@
 #main.py
 # Use: see README.md
 # Note: Dev choices are `camelCaseEd` . . .
-#  OR `PascalCase` where importing (see line 25+26).
+#  OR `PascalCase` where importing (see line 26+27).
 # ~Instances of `snake_case` are from Discord Python Library `discord`~
 # **Code narration fully left aligned**
 # Import the standard Python logging library
@@ -97,5 +97,5 @@ async def on_message(meSsage):
                 return
 # Run the BOT that we just procedurally scripted as `beOnTime`
 beOnTime.run(harmonyBotToken)
-## (beOnTime see above; line 34 ??)
-## (harmonyBotToken see above; line 20 ??)
+## (beOnTime see above; line 35 ??)
+## (harmonyBotToken see above; line 21 ??)
